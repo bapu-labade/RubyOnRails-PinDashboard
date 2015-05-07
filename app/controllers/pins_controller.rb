@@ -24,7 +24,6 @@ class PinsController < ApplicationController
   # POST /pins
   # POST /pins.json
   def create
-    binding.pry
     @pin = Pin.new(pin_params)
 
     respond_to do |format|
@@ -41,7 +40,6 @@ class PinsController < ApplicationController
   # PATCH/PUT /pins/1
   # PATCH/PUT /pins/1.json
   def update
-    binding.pry
     respond_to do |format|
       if @pin.update(pin_params)
         format.html { redirect_to @pin, notice: 'Pin was successfully updated.' }
