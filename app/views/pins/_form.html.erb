@@ -1,0 +1,39 @@
+<%= form_for @pin, :html => { :class => "form-horizontal pin", multipart: true } do |f| %>
+
+    <% if @pin.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@pin.errors.count, "error") %> prohibited this pin from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @pin.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <%= error_span(@pin[:title]) %>
+  </div>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'form-control' %>
+    </div>
+    <%= error_span(@pin[:description]) %>
+  </div>
+  <div class="control-group">
+    <%= f.file_field :image %>
+  </div>
+  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+            pins_path, :class => 'btn btn-default' %>
+
+<% end %>
