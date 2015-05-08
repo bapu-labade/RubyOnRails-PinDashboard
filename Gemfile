@@ -46,3 +46,4 @@ gem "twitter-bootstrap-rails"
 gem 'paperclip', '~> 4.2.1'
 gem 'pry'
 gem 'masonry-rails', '~> 0.2.4'
+gem 'devise'

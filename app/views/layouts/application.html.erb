@@ -49,8 +49,11 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
             <li><%= link_to "New Pin", new_pin_path  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+            <% unless user_signed_in? %>
+              <li><%= link_to "Log In", new_user_session_path %> </li>
+            <% else %>
+              <li><%=link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+            <% end %>
           </ul>
         </div>
       </div>
